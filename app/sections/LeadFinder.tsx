@@ -244,19 +244,29 @@ function LeadCard({ lead }: { lead: LeadCompany }) {
           </Badge>
         </div>
 
-        {/* Website Link */}
-        {lead?.website && (
+        {/* Company Search Links -- always use Google to avoid dead links */}
+        <div className="flex flex-wrap items-center gap-2 mb-3">
           <a
-            href={lead.website.startsWith('http') ? lead.website : `https://${lead.website}`}
+            href={`https://www.google.com/search?q=${encodeURIComponent(lead?.company_name ?? '')}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs font-medium mb-3 hover:underline transition-colors"
-            style={{ color: 'hsl(217 91% 50%)' }}
+            className="inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-lg hover:opacity-80 transition-opacity"
+            style={{ background: 'hsl(217 91% 50% / 0.08)', color: 'hsl(217 91% 50%)' }}
           >
-            <RiExternalLinkLine className="w-3.5 h-3.5" />
-            {lead.website}
+            <RiSearchLine className="w-3 h-3" />
+            Найти в Google
           </a>
-        )}
+          <a
+            href={`https://www.google.com/search?q=${encodeURIComponent((lead?.company_name ?? '') + ' сайт официальный')}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-lg hover:opacity-80 transition-opacity"
+            style={{ background: 'hsl(222 47% 11% / 0.06)', color: 'hsl(222 47% 11%)' }}
+          >
+            <RiExternalLinkLine className="w-3 h-3" />
+            Сайт компании
+          </a>
+        </div>
 
         {/* Contact Info */}
         {lead?.contact_info && (
@@ -438,6 +448,14 @@ export default function LeadFinder({ activeAgentId, onAgentActive }: LeadFinderP
       {/* Results */}
       {!loading && result && (
         <div>
+          {/* Verification Notice */}
+          <div className="mb-4 p-3 rounded-xl flex items-start gap-2.5" style={{ background: 'hsl(45 93% 47% / 0.08)', border: '1px solid hsl(45 93% 47% / 0.2)' }}>
+            <RiAlertLine className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: 'hsl(45 93% 47%)' }} />
+            <p className="text-xs leading-relaxed" style={{ color: 'hsl(222 47% 11%)' }}>
+              Данные получены через AI-поиск в реальном времени. Рекомендуем проверять актуальность сайтов и контактов перед обращением. Ссылки "Найти сайт в Google" открывают поиск по названию компании.
+            </p>
+          </div>
+
           {/* Summary Card */}
           {result?.search_summary && (
             <Card className="mb-6 bg-white/75 backdrop-blur-md" style={{ borderColor: 'hsl(214 32% 91%)', borderRadius: '0.875rem' }}>
