@@ -5,11 +5,12 @@ import { callAIAgent, AIAgentResponse } from '@/lib/aiAgent'
 import { Card, CardContent } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { cn } from '@/lib/utils'
-import { RiLoader4Line } from 'react-icons/ri'
+import { RiLoader4Line, RiBarChartGroupedLine, RiUserSearchLine } from 'react-icons/ri'
 
 import Sidebar from './sections/Sidebar'
 import AnalysisForm from './sections/AnalysisForm'
 import AnalysisResults from './sections/AnalysisResults'
+import LeadFinder from './sections/LeadFinder'
 
 // --- Types ---
 
@@ -52,12 +53,15 @@ const SEGMENT_NAMES: Record<string, string> = {
   healthcare: 'Здравоохранение и фитнес',
 }
 
+const LEAD_FINDER_AGENT_ID = '69a4b8e21bfdb0e56e23eb8b'
+
 const AGENTS = [
   { id: MANAGER_AGENT_ID, name: 'Client Analysis Coordinator', role: 'Координатор анализа' },
   { id: '69a4b457458020b954058c0b', name: 'SMB Segment Analyst', role: 'Аналитик МСБ' },
   { id: '69a4b45722134cb66bff872f', name: 'Enterprise Segment Analyst', role: 'Аналитик корпораций' },
   { id: '69a4b457236539586dca1e7e', name: 'E-commerce Segment Analyst', role: 'Аналитик E-commerce' },
   { id: '69a4b45822134cb66bff8731', name: 'Healthcare Segment Analyst', role: 'Аналитик здравоохранения' },
+  { id: LEAD_FINDER_AGENT_ID, name: 'Lead Finder', role: 'Поиск лидов (Perplexity)' },
 ]
 
 // --- Sample Data ---
@@ -245,6 +249,7 @@ export default function Page() {
   const [activeAgentId, setActiveAgentId] = useState<string | null>(null)
   const [activeHistoryId, setActiveHistoryId] = useState<string | null>(null)
   const [useSampleData, setUseSampleData] = useState(false)
+  const [activeTab, setActiveTab] = useState<'analysis' | 'leads'>('analysis')
 
   // Load history from localStorage
   useEffect(() => {
@@ -385,25 +390,65 @@ export default function Page() {
         {/* Main Content */}
         <main className="flex-1 overflow-y-auto min-h-screen">
           <div className="px-6 py-8 md:px-12 md:py-10">
-            {view === 'form' || view === 'loading' ? (
-              <AnalysisForm
-                selectedSegments={selectedSegments}
-                onToggleSegment={handleToggleSegment}
-                additionalContext={additionalContext}
-                onContextChange={setAdditionalContext}
-                onSubmit={handleSubmit}
-                loading={view === 'loading'}
-                error={error}
-                onRetry={handleSubmit}
-                useSampleData={useSampleData}
-                onToggleSampleData={handleToggleSampleData}
+            {/* Tab Navigation */}
+            <div className="max-w-[800px] mx-auto mb-8">
+              <div className="flex gap-2 p-1 rounded-xl" style={{ background: 'hsl(210 40% 94%)' }}>
+                <button
+                  onClick={() => setActiveTab('analysis')}
+                  className={cn(
+                    'flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200',
+                    activeTab === 'analysis' ? 'bg-white shadow-sm' : 'hover:bg-white/50'
+                  )}
+                  style={{ color: 'hsl(222 47% 11%)' }}
+                >
+                  <RiBarChartGroupedLine className="w-4 h-4" />
+                  Анализ сегментов
+                </button>
+                <button
+                  onClick={() => setActiveTab('leads')}
+                  className={cn(
+                    'flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg text-sm font-medium transition-all duration-200',
+                    activeTab === 'leads' ? 'bg-white shadow-sm' : 'hover:bg-white/50'
+                  )}
+                  style={{ color: 'hsl(222 47% 11%)' }}
+                >
+                  <RiUserSearchLine className="w-4 h-4" />
+                  Поиск лидов
+                </button>
+              </div>
+            </div>
+
+            {/* Tab Content */}
+            {activeTab === 'analysis' && (
+              <>
+                {view === 'form' || view === 'loading' ? (
+                  <AnalysisForm
+                    selectedSegments={selectedSegments}
+                    onToggleSegment={handleToggleSegment}
+                    additionalContext={additionalContext}
+                    onContextChange={setAdditionalContext}
+                    onSubmit={handleSubmit}
+                    loading={view === 'loading'}
+                    error={error}
+                    onRetry={handleSubmit}
+                    useSampleData={useSampleData}
+                    onToggleSampleData={handleToggleSampleData}
+                  />
+                ) : view === 'results' && analysisResult ? (
+                  <AnalysisResults
+                    report={analysisResult}
+                    onNewAnalysis={handleNewAnalysis}
+                  />
+                ) : null}
+              </>
+            )}
+
+            {activeTab === 'leads' && (
+              <LeadFinder
+                activeAgentId={activeAgentId}
+                onAgentActive={setActiveAgentId}
               />
-            ) : view === 'results' && analysisResult ? (
-              <AnalysisResults
-                report={analysisResult}
-                onNewAnalysis={handleNewAnalysis}
-              />
-            ) : null}
+            )}
 
             {/* Agent Status Footer */}
             <div className="max-w-[720px] mx-auto mt-12">

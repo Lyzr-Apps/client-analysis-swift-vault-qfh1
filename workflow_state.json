@@ -40,6 +40,13 @@
         "69a4b457236539586dca1e7e",
         "69a4b45822134cb66bff8731"
       ]
+    },
+    "lead_finder": {
+      "agent_id": "69a4b8e21bfdb0e56e23eb8b",
+      "name": "Lead Finder Agent",
+      "type": "standalone",
+      "provider": "perplexity",
+      "model": "sonar-pro"
     }
   }
 }

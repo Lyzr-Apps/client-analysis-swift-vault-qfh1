@@ -1,0 +1,46 @@
+{
+  "agent_name": "Lead Finder Agent",
+  "agent_id": "69a4b8e21bfdb0e56e23eb8b",
+  "description": "\u0418\u0449\u0435\u0442 \u043a\u043e\u043d\u043a\u0440\u0435\u0442\u043d\u044b\u0435 \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0438-\u043f\u043e\u0442\u0435\u043d\u0446\u0438\u0430\u043b\u044c\u043d\u044b\u0445 \u043a\u043b\u0438\u0435\u043d\u0442\u043e\u0432 \u043f\u043e \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u043e\u043c\u0443 \u0441\u0435\u0433\u043c\u0435\u043d\u0442\u0443 \u0447\u0435\u0440\u0435\u0437 \u0432\u0435\u0431-\u043f\u043e\u0438\u0441\u043a. \u0412\u043e\u0437\u0432\u0440\u0430\u0449\u0430\u0435\u0442 \u0441\u043f\u0438\u0441\u043e\u043a \u043a\u043e\u043c\u043f\u0430\u043d\u0438\u0439 \u0441 \u043e\u043f\u0438\u0441\u0430\u043d\u0438\u0435\u043c, \u043a\u043e\u043d\u0442\u0430\u043a\u0442\u043d\u043e\u0439 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0435\u0439 \u0438 \u043e\u0446\u0435\u043d\u043a\u043e\u0439 \u043f\u043e\u0442\u0435\u043d\u0446\u0438\u0430\u043b\u0430.",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "segment": "string",
+    "region": "string",
+    "total_leads": "number",
+    "leads": [
+      {
+        "company_name": "string",
+        "industry": "string",
+        "description": "string",
+        "why_they_need_app": "string",
+        "website": "string",
+        "contact_info": "string",
+        "potential_score": "number",
+        "estimated_budget": "string",
+        "recommended_approach": "string"
+      }
+    ],
+    "search_summary": "string"
+  },
+  "example_response": {
+    "segment": "The segment that was searched",
+    "region": "Region/market searched",
+    "total_leads": 0,
+    "leads": [
+      {
+        "company_name": "sample string",
+        "industry": "sample string",
+        "description": "sample string",
+        "why_they_need_app": "sample string",
+        "website": "sample string",
+        "contact_info": "sample string",
+        "potential_score": 0,
+        "estimated_budget": "sample string",
+        "recommended_approach": "sample string"
+      }
+    ],
+    "search_summary": "Brief summary of the search results and recommendations"
+  }
+}

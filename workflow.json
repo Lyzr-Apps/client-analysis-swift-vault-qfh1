@@ -37,6 +37,12 @@
       "nodeCategory": "agent"
     },
     {
+      "id": "lead_finder_agent",
+      "type": "Agent",
+      "label": "Lead Finder Agent",
+      "nodeCategory": "agent"
+    },
+    {
       "id": "output_node",
       "type": "Output",
       "label": "Analysis Report",
@@ -45,6 +51,7 @@
   ],
   "edges": [
     { "source": "input_node", "target": "manager_agent" },
+    { "source": "input_node", "target": "lead_finder_agent" },
     { "source": "manager_agent", "target": "smb_agent" },
     { "source": "manager_agent", "target": "enterprise_agent" },
     { "source": "manager_agent", "target": "ecommerce_agent" },
@@ -52,6 +59,7 @@
     { "source": "smb_agent", "target": "output_node" },
     { "source": "enterprise_agent", "target": "output_node" },
     { "source": "ecommerce_agent", "target": "output_node" },
-    { "source": "healthcare_agent", "target": "output_node" }
+    { "source": "healthcare_agent", "target": "output_node" },
+    { "source": "lead_finder_agent", "target": "output_node" }
   ]
 }
