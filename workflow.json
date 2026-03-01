@@ -1,0 +1,57 @@
+{
+  "nodes": [
+    {
+      "id": "input_node",
+      "type": "Input",
+      "label": "User Query",
+      "nodeCategory": "input"
+    },
+    {
+      "id": "manager_agent",
+      "type": "Agent",
+      "label": "Client Analysis Coordinator",
+      "nodeCategory": "agent"
+    },
+    {
+      "id": "smb_agent",
+      "type": "Agent",
+      "label": "SMB Segment Analyst",
+      "nodeCategory": "agent"
+    },
+    {
+      "id": "enterprise_agent",
+      "type": "Agent",
+      "label": "Enterprise Segment Analyst",
+      "nodeCategory": "agent"
+    },
+    {
+      "id": "ecommerce_agent",
+      "type": "Agent",
+      "label": "E-commerce Segment Analyst",
+      "nodeCategory": "agent"
+    },
+    {
+      "id": "healthcare_agent",
+      "type": "Agent",
+      "label": "Healthcare Segment Analyst",
+      "nodeCategory": "agent"
+    },
+    {
+      "id": "output_node",
+      "type": "Output",
+      "label": "Analysis Report",
+      "nodeCategory": "end"
+    }
+  ],
+  "edges": [
+    { "source": "input_node", "target": "manager_agent" },
+    { "source": "manager_agent", "target": "smb_agent" },
+    { "source": "manager_agent", "target": "enterprise_agent" },
+    { "source": "manager_agent", "target": "ecommerce_agent" },
+    { "source": "manager_agent", "target": "healthcare_agent" },
+    { "source": "smb_agent", "target": "output_node" },
+    { "source": "enterprise_agent", "target": "output_node" },
+    { "source": "ecommerce_agent", "target": "output_node" },
+    { "source": "healthcare_agent", "target": "output_node" }
+  ]
+}

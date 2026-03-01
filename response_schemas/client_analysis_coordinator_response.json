@@ -1,0 +1,46 @@
+{
+  "agent_name": "Client Analysis Coordinator",
+  "agent_id": "69a4b46f64d6d0fa3ce147b7",
+  "description": "\u041a\u043e\u043e\u0440\u0434\u0438\u043d\u0438\u0440\u0443\u0435\u0442 \u0438\u0441\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u043d\u0438\u0435 4 \u043a\u043b\u0438\u0435\u043d\u0442\u0441\u043a\u0438\u0445 \u0441\u0435\u0433\u043c\u0435\u043d\u0442\u043e\u0432, \u0430\u0433\u0440\u0435\u0433\u0438\u0440\u0443\u0435\u0442 \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u044b sub-agents \u0432 \u0435\u0434\u0438\u043d\u044b\u0439 \u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0439 \u043e\u0442\u0447\u0451\u0442 \u0441 \u0430\u043d\u0430\u043b\u0438\u0437\u043e\u043c \u0438 \u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u044f\u043c\u0438 \u043f\u0440\u0438\u0432\u043b\u0435\u0447\u0435\u043d\u0438\u044f",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "analysis_title": "string",
+    "segments": [
+      {
+        "segment_name": "string",
+        "client_profile": "string",
+        "typical_needs": "string",
+        "pain_points": "string",
+        "budget_range": "string",
+        "acquisition_channels": "string",
+        "entry_strategy": "string",
+        "recommendations": "string",
+        "summary": "string"
+      }
+    ],
+    "cross_segment_comparison": "string",
+    "priority_ranking": "string",
+    "overall_recommendations": "string"
+  },
+  "example_response": {
+    "analysis_title": "Title of the analysis report",
+    "segments": [
+      {
+        "segment_name": "sample string",
+        "client_profile": "sample string",
+        "typical_needs": "sample string",
+        "pain_points": "sample string",
+        "budget_range": "sample string",
+        "acquisition_channels": "sample string",
+        "entry_strategy": "sample string",
+        "recommendations": "sample string",
+        "summary": "sample string"
+      }
+    ],
+    "cross_segment_comparison": "Comparative analysis across all segments",
+    "priority_ranking": "Ranked list of segments by priority/potential",
+    "overall_recommendations": "Strategic recommendations across all segments"
+  }
+}

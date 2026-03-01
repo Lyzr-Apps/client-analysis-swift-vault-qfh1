@@ -1,0 +1,30 @@
+{
+  "agent_name": "Healthcare Segment Analyst",
+  "agent_id": "69a4b45822134cb66bff8731",
+  "description": "Исследует сегмент здравоохранения и фитнеса -- регуляторные требования, типы приложений, ключевые игроки, каналы привлечения",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "segment_name": "string",
+    "client_profile": "string",
+    "typical_needs": "string",
+    "pain_points": "string",
+    "budget_range": "string",
+    "acquisition_channels": "string",
+    "entry_strategy": "string",
+    "recommendations": "string",
+    "summary": "string"
+  },
+  "example_response": {
+    "segment_name": "Name of the segment analyzed",
+    "client_profile": "Description of typical clients in this segment",
+    "typical_needs": "Typical mobile app needs for this segment",
+    "pain_points": "Common pain points and problems",
+    "budget_range": "Typical budget ranges",
+    "acquisition_channels": "Best channels to reach these clients",
+    "entry_strategy": "Strategy for approaching and winning clients",
+    "recommendations": "Specific actionable recommendations",
+    "summary": "Brief 2-3 sentence summary of the segment analysis"
+  }
+}

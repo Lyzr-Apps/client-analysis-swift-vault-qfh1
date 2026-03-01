@@ -1,0 +1,45 @@
+{
+  "agents": {
+    "smb_analyst": {
+      "agent_id": "69a4b457458020b954058c0b",
+      "name": "SMB Segment Analyst",
+      "type": "sub-agent",
+      "provider": "perplexity",
+      "model": "sonar-pro"
+    },
+    "enterprise_analyst": {
+      "agent_id": "69a4b45722134cb66bff872f",
+      "name": "Enterprise Segment Analyst",
+      "type": "sub-agent",
+      "provider": "perplexity",
+      "model": "sonar-pro"
+    },
+    "ecommerce_analyst": {
+      "agent_id": "69a4b457236539586dca1e7e",
+      "name": "E-commerce Segment Analyst",
+      "type": "sub-agent",
+      "provider": "perplexity",
+      "model": "sonar-pro"
+    },
+    "healthcare_analyst": {
+      "agent_id": "69a4b45822134cb66bff8731",
+      "name": "Healthcare Segment Analyst",
+      "type": "sub-agent",
+      "provider": "perplexity",
+      "model": "sonar-pro"
+    },
+    "manager": {
+      "agent_id": "69a4b46f64d6d0fa3ce147b7",
+      "name": "Client Analysis Coordinator",
+      "type": "manager",
+      "provider": "openai",
+      "model": "gpt-4.1",
+      "managed_agents": [
+        "69a4b457458020b954058c0b",
+        "69a4b45722134cb66bff872f",
+        "69a4b457236539586dca1e7e",
+        "69a4b45822134cb66bff8731"
+      ]
+    }
+  }
+}
