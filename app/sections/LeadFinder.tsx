@@ -309,7 +309,7 @@ export default function LeadFinder({ activeAgentId, onAgentActive }: LeadFinderP
     onAgentActive(LEAD_FINDER_AGENT_ID)
 
     try {
-      const message = `Найди конкретные компании -- потенциальных клиентов для разработки мобильных приложений в сегменте: ${segmentNames[selectedSegment] ?? selectedSegment}. Регион: ${region || 'Россия'}. ${filters ? `Дополнительные фильтры: ${filters}` : ''} Найди минимум 5-10 реальных компаний с контактной информацией.`
+      const message = `Найди конкретные ЧАСТНЫЕ КОММЕРЧЕСКИЕ компании -- потенциальных клиентов для разработки мобильных приложений в сегменте: ${segmentNames[selectedSegment] ?? selectedSegment}. Регион: ${region || 'Россия'}. ${filters ? `Дополнительные фильтры: ${filters}` : ''} ВАЖНО: Ищи ТОЛЬКО частный бизнес (ООО, АО, стартапы, частные сети). НИКАКИХ государственных организаций, министерств, ГУП, МУП, госкорпораций. Найди минимум 5-10 реальных частных компаний с контактной информацией и признаками цифровой трансформации.`
 
       const agentResult = await callAIAgent(message, LEAD_FINDER_AGENT_ID)
       const parsed = parseLeadResponse(agentResult)
